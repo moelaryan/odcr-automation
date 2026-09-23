@@ -1,0 +1,20 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION": "7.4",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+
+    "ODCR_SUBSCRIPTION_ID": "<your-subscription-guid>",
+    "ODCR_RG": "odcr-demo-rg",
+    "ODCR_GROUP": "demoCRG",
+    "ODCR_NAME": "demoRes",
+    "ODCR_SKU": "Standard_D2s_v3",
+
+    "ODCR_LOCATIONS": "eastus,centralus,westus,westus2,westus3",
+    "ODCR_MODE": "parallel",
+    "ODCR_TARGET_CAPACITY": "eastus:3,centralus:2,westus:1,westus2:1,westus3:1",
+
+    "TZ": "America/New_York"
+  }
+}
