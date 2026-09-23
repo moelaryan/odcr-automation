@@ -1,4 +1,7 @@
-# ODCR Automation — Scheduled Multi-Region Capacity Reservations
+# SCR — Scheduled Capacity Reservation
+
+> The automation layer that provisions **ODCRs/FCRs on a schedule, across regions** —
+> reserving guaranteed capacity before your daily peak and releasing it afterward.
 
 A serverless **Azure Functions** (PowerShell) solution that automatically acquires
 **On-Demand Capacity Reservations (ODCRs)** across multiple Azure regions on a daily
