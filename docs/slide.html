@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1280px; height: 720px; font-family: "Segoe UI", Arial, sans-serif; }
+  .slide {
+    width: 1280px; height: 720px;
+    background: linear-gradient(135deg, #0b1f3a 0%, #12325c 55%, #1b4b8a 100%);
+    color: #fff; padding: 48px 56px; position: relative; overflow: hidden;
+  }
+  .slide::after {
+    content: ""; position: absolute; right: -160px; top: -160px;
+    width: 520px; height: 520px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(80,160,255,0.22), transparent 70%);
+  }
+  .eyebrow { font-size: 18px; letter-spacing: 3px; color: #7fb4ff; font-weight: 600; text-transform: uppercase; }
+  h1 { font-size: 52px; font-weight: 700; margin-top: 6px; letter-spacing: -0.5px; }
+  h1 span { color: #56c1ff; }
+  .tag { font-size: 20px; color: #c7d8f0; margin-top: 10px; max-width: 900px; }
+  .flow { display: flex; align-items: stretch; gap: 14px; margin-top: 40px; }
+  .card {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(120,170,255,0.28);
+    border-radius: 14px; padding: 18px 16px; flex: 1;
+  }
+  .card .ico { font-size: 26px; }
+  .card .t { font-size: 17px; font-weight: 700; margin-top: 8px; }
+  .card .d { font-size: 13.5px; color: #b9cbe6; margin-top: 5px; line-height: 1.4; }
+  .arrow { display: flex; align-items: center; color: #56c1ff; font-size: 26px; font-weight: 700; }
+  .regions { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .pill { font-size: 11.5px; background: rgba(86,193,255,0.16); border: 1px solid rgba(86,193,255,0.4);
+    color: #cfeaff; border-radius: 999px; padding: 2px 9px; }
+  .features { display: flex; gap: 14px; margin-top: 34px; }
+  .feat { flex: 1; display: flex; gap: 10px; align-items: flex-start; }
+  .feat .fi { font-size: 20px; }
+  .feat .ft { font-size: 14.5px; font-weight: 700; }
+  .feat .fd { font-size: 12.5px; color: #b9cbe6; margin-top: 2px; line-height: 1.35; }
+  .footer { position: absolute; bottom: 26px; left: 56px; right: 56px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(120,170,255,0.25); padding-top: 14px; }
+  .footer .l { font-size: 14px; color: #9db8dc; }
+  .footer .r { font-size: 14px; color: #7fb4ff; font-weight: 600; }
+  .family { display: flex; gap: 8px; align-items: center; }
+  .fam { font-size: 12.5px; color: #9db8dc; border: 1px solid rgba(120,170,255,0.3); border-radius: 6px; padding: 3px 8px; }
+  .fam.hi { color: #0b1f3a; background: #56c1ff; border-color: #56c1ff; font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="eyebrow">Serverless capacity automation on Azure</div>
+    <h1><span>SCR</span> — Scheduled Capacity Reservation</h1>
+    <div class="tag">Provisions guaranteed GPU capacity (ODCRs) across regions <b>before</b> the daily exam window, retries through shortages, then releases it at night to control cost.</div>
+
+    <div class="flow">
+      <div class="card">
+        <div class="ico">⏰</div>
+        <div class="t">Schedule</div>
+        <div class="d">Timer fires every 5 min, 5–8am ET. ~3-hour retry runway.</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="card">
+        <div class="ico">⚡</div>
+        <div class="t">Function App</div>
+        <div class="d">PowerShell on Flex. Managed identity → ARM REST. Idempotent.</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="card">
+        <div class="ico">🌎</div>
+        <div class="t">Parallel ODCRs</div>
+        <div class="d">One reservation per region, sized independently.</div>
+        <div class="regions">
+          <span class="pill">eastus</span><span class="pill">centralus</span><span class="pill">westus</span><span class="pill">westus2</span><span class="pill">westus3</span>
+        </div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="card">
+        <div class="ico">🔔</div>
+        <div class="t">Alert &amp; Release</div>
+        <div class="d">8am status → email/SMS. Teardown releases capacity at 7pm.</div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feat"><div class="fi">🧩</div><div><div class="ft">Config-driven</div><div class="fd">Regions, per-region VM count, SKU &amp; schedule are app settings — no redeploy.</div></div></div>
+      <div class="feat"><div class="fi">🔁</div><div><div class="ft">Self-healing retry</div><div class="fd">Capacity errors classified retryable vs terminal; tops up partials.</div></div></div>
+      <div class="feat"><div class="fi">🔐</div><div><div class="ft">No secrets</div><div class="fd">Managed identity + RBAC only. Identity-based, private storage.</div></div></div>
+      <div class="feat"><div class="fi">💸</div><div><div class="ft">Cost-aware</div><div class="fd">Capacity held only during the window; serverless scales to zero.</div></div></div>
+    </div>
+
+    <div class="footer">
+      <div class="family">
+        <span class="fam">ODCR · on-demand</span>
+        <span class="fam">FCR · future</span>
+        <span class="fam hi">SCR · scheduled automation</span>
+      </div>
+      <div class="r">github.com/moelaryan/scr</div>
+    </div>
+  </div>
+</body>
+</html>
